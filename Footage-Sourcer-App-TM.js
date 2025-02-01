@@ -3,23 +3,26 @@
 // @namespace    http://tampermonkey.net/
 // @version      8.2.7
 // @description  Core logic for the Footage Sourcing App, managing UI, API requests, and automation features.
-// @grant        none
+// @match        *://www.storyblocks.com/*
+// @match        *://elements.envato.com/*
+// @grant        GM_xmlhttpRequest
+// @grant        GM_setValue
+// @grant        GM_getValue
+// @updateURL    https://cdn.jsdelivr.net/gh/LRM2025/footage-sourcing-app/Footage-Sourcer-App-TM.js
+// @downloadURL  https://cdn.jsdelivr.net/gh/LRM2025/footage-sourcing-app/Footage-Sourcer-App-TM.js
 // ==/UserScript==
 
-(function waitForConfig() {
-    'use strict';
+    // 🗂️ Get the saved URL or set a default placeholder -  // INSERT YOUR WebApp URL here:
+    let WEBAPP_URL = GM_getValue('WEBAPP_URL', 'YOUR WEB URL');
 
-    // Check if the config is available
-    if (typeof window.FOOTAGE_APP_CONFIG === 'undefined' || !window.FOOTAGE_APP_CONFIG.WEBAPP_URL) {
-        console.warn('⏳ Waiting for FOOTAGE_APP_CONFIG...');
-        setTimeout(waitForConfig, 100);  // Retry after 100ms
-        return;
+    // 📥 Prompt user to set the URL if it's still the default placeholder
+    if (WEBAPP_URL === 'YOUR WEB URL') {
+        const userURL = prompt('Please enter your WebApp URL:', '');
+        if (userURL) {
+            GM_setValue('WEBAPP_URL', userURL);
+            WEBAPP_URL = userURL;
+        }
     }
-
-    const WEBAPP_URL = window.FOOTAGE_APP_CONFIG.WEBAPP_URL;
-
-    console.log('✅ Footage Sourcing App (Core) loaded.');
-    console.log('🌐 Using WebApp URL:', WEBAPP_URL);
 
     //----------------------------------------------------------------
     // PLATFORM DETECTION + SEARCH URL
