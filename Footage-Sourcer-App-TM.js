@@ -12,11 +12,11 @@
 // @downloadURL  https://cdn.jsdelivr.net/gh/LRM2025/footage-sourcing-app/Footage-Sourcer-App-TM.js
 // ==/UserScript==
 
-   (function() {
+(function() {
     'use strict';
 
-    // INSERT YOUR WebApp URL here:
-    const WEBAPP_URL = 'Your Project Web URL';
+    // INSERT YOUR WebApp URL here: in the place after ||
+    let WEBAPP_URL = GM_getValue('WEBAPP_URL') || 'YOUR URL';
 
     //----------------------------------------------------------------
     // PLATFORM DETECTION + SEARCH URL
