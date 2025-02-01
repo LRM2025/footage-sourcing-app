@@ -3,6 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      8.2.7
 // @description  Core logic for the Footage Sourcing App, managing UI, API requests, and automation features.
+// @grant        none
 // ==/UserScript==
 
 (function waitForConfig() {
