@@ -1,22 +1,23 @@
 // ==UserScript==
-// @name         Footage Sourcing App
+// @name         Footage Sourcing App (Core)
 // @namespace    http://tampermonkey.net/
 // @version      8.2.7
-// @description  Adds copy/undo for Timestamps & Claude-based script analysis; dynamic sourcer list, jump-to, minimize mode, etc.
-// @match        *://www.storyblocks.com/*
-// @match        *://elements.envato.com/*
-// @grant        GM_xmlhttpRequest
-// @grant        GM_setValue
-// @grant        GM_getValue
-// @updateURL    https://script.google.com/macros/s/AKfycbz3cYBYnsFClTV4ou888vVqg0GoNEjn0sdldiEqpCssK8lSlTsfOgByR8mXdzobI5Lcdw/exec
-// @downloadURL  https://script.google.com/macros/s/AKfycbz3cYBYnsFClTV4ou888vVqg0GoNEjn0sdldiEqpCssK8lSlTsfOgByR8mXdzobI5Lcdw/exec
+// @description  Core logic for the Footage Sourcing App, managing UI, API requests, and automation features.
 // ==/UserScript==
 
 (function() {
     'use strict';
 
-    // INSERT YOUR WebApp URL here:
-    const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbzKRyQiVZzSWiA04fQ9QJk6biEvjhsJC178HffUJC_LtZjIroBt9wzX360KvYDCu88pkw/exec';
+    // The WebApp URL will be provided by the local script
+    const WEBAPP_URL = window.FOOTAGE_APP_CONFIG?.WEBAPP_URL || '';
+
+    if (!WEBAPP_URL) {
+        console.error('❌ Footage Sourcing App: WEBAPP_URL is not configured.');
+        return;
+    }
+
+    console.log('✅ Footage Sourcing App (Core) loaded.');
+    console.log('🌐 Using WebApp URL:', WEBAPP_URL);
 
     //----------------------------------------------------------------
     // PLATFORM DETECTION + SEARCH URL
