@@ -12,17 +12,11 @@
 // @downloadURL  https://cdn.jsdelivr.net/gh/LRM2025/footage-sourcing-app/Footage-Sourcer-App-TM.js
 // ==/UserScript==
 
-    // 🗂️ Get the saved URL or set a default placeholder -  // INSERT YOUR WebApp URL here:
-    let WEBAPP_URL = GM_getValue('WEBAPP_URL', 'YOUR WEB URL');
+   (function() {
+    'use strict';
 
-    // 📥 Prompt user to set the URL if it's still the default placeholder
-    if (WEBAPP_URL === 'YOUR WEB URL') {
-        const userURL = prompt('Please enter your WebApp URL:', '');
-        if (userURL) {
-            GM_setValue('WEBAPP_URL', userURL);
-            WEBAPP_URL = userURL;
-        }
-    }
+    // INSERT YOUR WebApp URL here:
+    const WEBAPP_URL = 'YOUR WEB URL';
 
     //----------------------------------------------------------------
     // PLATFORM DETECTION + SEARCH URL
