@@ -5,16 +5,17 @@
 // @description  Core logic for the Footage Sourcing App, managing UI, API requests, and automation features.
 // ==/UserScript==
 
-(function() {
+(function waitForConfig() {
     'use strict';
 
-    // The WebApp URL will be provided by the local script
-    const WEBAPP_URL = window.FOOTAGE_APP_CONFIG?.WEBAPP_URL || '';
-
-    if (!WEBAPP_URL) {
-        console.error('❌ Footage Sourcing App: WEBAPP_URL is not configured.');
+    // Check if the config is available
+    if (typeof window.FOOTAGE_APP_CONFIG === 'undefined' || !window.FOOTAGE_APP_CONFIG.WEBAPP_URL) {
+        console.warn('⏳ Waiting for FOOTAGE_APP_CONFIG...');
+        setTimeout(waitForConfig, 100);  // Retry after 100ms
         return;
     }
+
+    const WEBAPP_URL = window.FOOTAGE_APP_CONFIG.WEBAPP_URL;
 
     console.log('✅ Footage Sourcing App (Core) loaded.');
     console.log('🌐 Using WebApp URL:', WEBAPP_URL);
