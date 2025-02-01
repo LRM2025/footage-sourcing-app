@@ -16,7 +16,7 @@
     'use strict';
 
     // INSERT YOUR WebApp URL here:
-    const WEBAPP_URL = 'YOUR WEB URL';
+    const WEBAPP_URL = 'Your Project Web URL';
 
     //----------------------------------------------------------------
     // PLATFORM DETECTION + SEARCH URL
